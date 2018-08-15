@@ -8,12 +8,15 @@
     </head>
     <body>
     
+    
+    
+    
     	<c:import url="inc/menu.jsp" />
     
         <div>
             <form method="post" action="creationCommande">
                
-               <c:import url="inc/inc_client_form.jsp" />
+               <c:import url="inc/inc_client_var.jsp" />
                
                 <fieldset>
                     <legend>Informations commande</legend>

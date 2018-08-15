@@ -2,79 +2,90 @@ package com.sdzee.tp.beans;
 
 public class Commande {
 
-	private Client client;
-	private String date = "";
-	private double montant;
-	private String modePaiement;
-	private String statutPaiement;
-	private String modeLivraison;
-	private String statutLivraison;
-	
-	public Commande(Client client, String date, double montant, String modePaiement, String statutPaiement, String modeLivraison, String statutLivraison) {
-		this.client = client;
-		this.date = date;
-		this.montant = montant;
-		this.modePaiement = modePaiement;
-		this.statutPaiement = statutPaiement;
-		this.modeLivraison = modeLivraison;
-		this.statutLivraison = statutLivraison;				
-	}
+    private Client client;
+    private String date = "";
+    private double montant;
+    private String modePaiement;
+    private String statutPaiement;
+    private String modeLivraison;
+    private String statutLivraison;
 
-	public Client getClient() {
-		return client;
-	}
+    public Commande( Client client, String date, double montant, String modePaiement, String statutPaiement,
+            String modeLivraison, String statutLivraison ) {
+        this.client = client;
+        this.date = date;
+        this.montant = montant;
+        this.modePaiement = modePaiement;
+        this.statutPaiement = statutPaiement;
+        this.modeLivraison = modeLivraison;
+        this.statutLivraison = statutLivraison;
+    }
 
-	public void setClient(Client client) {
-		this.client = client;
-	}
+    public Client getClient() {
+        return client;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public void setClient( Client client ) {
+        this.client = client;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public double getMontant() {
-		return montant;
-	}
+    public void setDate( String date ) {
+        this.date = date;
+    }
 
-	public void setMontant(double montant) {
-		this.montant = montant;
-	}
+    public double getMontant() {
+        return montant;
+    }
 
-	public String getModePaiement() {
-		return modePaiement;
-	}
+    public void setMontant( double montant ) {
+        this.montant = montant;
+    }
 
-	public void setModePaiement(String modePaiement) {
-		this.modePaiement = modePaiement;
-	}
+    public String getModePaiement() {
+        return modePaiement;
+    }
 
-	public String getStatutLivraison() {
-		return statutLivraison;
-	}
+    public void setModePaiement( String modePaiement ) {
+        this.modePaiement = modePaiement;
+    }
 
-	public void setStatutLivraison(String statutLivraison) {
-		this.statutLivraison = statutLivraison;
-	}
+    public String getStatutLivraison() {
+        return statutLivraison;
+    }
 
-	public String getStatutPaiement() {
-		return statutPaiement;
-	}
+    public void setStatutLivraison( String statutLivraison ) {
+        this.statutLivraison = statutLivraison;
+    }
 
-	public void setStatutPaiement(String statutPaiement) {
-		this.statutPaiement = statutPaiement;
-	}
+    public String getStatutPaiement() {
+        return statutPaiement;
+    }
 
-	public String getModeLivraison() {
-		return modeLivraison;
-	}
+    public void setStatutPaiement( String statutPaiement ) {
+        this.statutPaiement = statutPaiement;
+    }
 
-	public void setModeLivraison(String modeLivraison) {
-		this.modeLivraison = modeLivraison;
-	}
-	
-	
+    public String getModeLivraison() {
+        return modeLivraison;
+    }
+
+    public void setModeLivraison( String modeLivraison ) {
+        this.modeLivraison = modeLivraison;
+    }
+
+    @Override
+    public boolean equals( Object obj ) {
+
+        Commande comm = (Commande) obj;
+        if ( this.getDate().equals( comm.getDate() ) ) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

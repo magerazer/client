@@ -67,5 +67,42 @@ form input.sansLabel {
 	color: #900;
 }
 
+/* Tableau ---------------------------------------------------------------------------------------- */
+
+th {
+	border: 1px #0568CD solid;
+	padding: 10px;	
+	background-color: #ffffff;
+	color: #0568CD;
+}
+
+
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+tr:nth-child(odd) {
+	background-color: #f2f2f2;
+}
+
+td {
+	border: 1px #aaaaaa solid;
+	padding : 10px;
+	texte-align : left;
+}
+
+#action {
+	text-align: center;
+	color: #ff0000;
+}
+
+th#action {
+	border-color: red;
+}
+
+
 
 

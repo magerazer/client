@@ -1,33 +1,73 @@
 package com.sdzee.tp.forms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.sdzee.tp.beans.Client;
 
 public class CreationClientForm {
 
-    public static final String  CHAMP_NOM    = "nomClient";
-    public static final String  CHAMP_PRENOM = "prenomClient";
-    public static final String  CHAMP_ADR    = "adresseClient";
-    public static final String  CHAMP_TEL    = "telephoneClient";
-    public static final String  CHAMP_MAIL   = "emailClient";
+    public static final String  CHAMP_NOM                 = "nomClient";
+    public static final String  CHAMP_PRENOM              = "prenomClient";
+    public static final String  CHAMP_ADR                 = "adresseClient";
+    public static final String  CHAMP_TEL                 = "telephoneClient";
+    public static final String  CHAMP_MAIL                = "emailClient";
 
-    private static final String ATT_ERREURS  = "erreurs";
-    private static final String ATT_RESULTAT = "resultatClient";
+    private static final String ATT_ERREURS               = "erreurs";
+    private static final String ATT_RESULTAT              = "resultatClient";
 
     private String              resultat;
-    private Map<String, String> erreurs      = new HashMap<String, String>();
+    private Map<String, String> erreurs                   = new HashMap<String, String>();
+
+    public static final String  ATT_SESSION_LISTE_CLIENTS = "listeSessionClients";
 
     public Client inscriptionClient( HttpServletRequest req ) {
 
-        String nom = req.getParameter( CHAMP_NOM );
-        String prenom = req.getParameter( CHAMP_PRENOM );
-        String adresse = req.getParameter( CHAMP_ADR );
-        String telephone = req.getParameter( CHAMP_TEL );
-        String email = req.getParameter( CHAMP_MAIL );
+        String choixCliNom = "";
+        choixCliNom = req.getParameter( "choixCli" );
+        HttpSession session = req.getSession();
+        List<Client> listeCli = (List<Client>) session.getAttribute( ATT_SESSION_LISTE_CLIENTS );
+        if ( choixCliNom == null )
+            choixCliNom = "";
+        Client choixCli = new Client( choixCliNom, "", "", "", "" );
+
+        if ( listeCli == null ) {
+            System.out.println( "Hello" );
+            listeCli = new ArrayList<Client>();
+        }
+        System.out.println( "HEEEEEEEEEELLLLLLLLLLLLOOOOOOOOOO !!!!!!!" );
+        System.out.println( "choixCliNom " + choixCliNom + "." );
+        for ( int i = 0; i < listeCli.size(); i++ ) {
+            System.out.println( listeCli.get( i ).getNom() + "." );
+        }
+
+        if ( listeCli != null ) {
+            // if ( listeCli.contains( choixCli ) ) {
+            System.out.println( "euh" );
+            for ( int i = 0; i < listeCli.size(); i++ ) {
+                if ( listeCli.get( i ).equals( choixCli ) ) {
+                    choixCli = listeCli.get( i );
+                    System.out.println( "euh" );
+                } else {
+                    System.out.println( "beeh" );
+                }
+
+            }
+            // }
+        }
+
+        String nom, prenom, adresse, telephone, email;
+
+        nom = choixCliNom.equals( "" ) ? req.getParameter( CHAMP_NOM ) : choixCli.getNom();
+        prenom = choixCliNom.equals( "" ) ? req.getParameter( CHAMP_PRENOM ) : choixCli.getPrenom();
+        adresse = choixCliNom.equals( "" ) ? req.getParameter( CHAMP_ADR ) : choixCli.getAdresse();
+        telephone = choixCliNom.equals( "" ) ? req.getParameter( CHAMP_TEL ) : choixCli.getTelephone();
+        email = choixCliNom.equals( "" ) ? req.getParameter( CHAMP_MAIL ) : choixCli.getEmail();
 
         try {
             validationNom( nom );
