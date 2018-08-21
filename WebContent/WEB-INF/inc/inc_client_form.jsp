@@ -24,7 +24,7 @@
 <br />
 
 <label for="fichier">Image<span class="requis">*</span></label>
-<input type="file" id="fichier" name="fichier" value="<c:out value="${ fichier.nom }"/>" />
+<input type="file" id="fichier" name="fichier" value="<c:out value="${ client.fichier.chemin }"/>" />
 <span class="erreur">${ form.erreurs['fichier'] }</span>
 <br><br>
 

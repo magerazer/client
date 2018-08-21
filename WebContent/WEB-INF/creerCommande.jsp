@@ -14,7 +14,7 @@
     	<c:import url="inc/menu.jsp" />
     
         <div>
-            <form method="post" action="creationCommande">
+            <form method="post" action="creationCommande" enctype="multipart/form-data">
                
                <c:import url="inc/inc_client_var.jsp" />
                

@@ -22,6 +22,7 @@
 			<th>Adresse</th>
 			<th>Telephone</th>
 			<th>Email</th>
+			<th>Image</th>
 			<th id="action">Action</th>
 			</tr>
 		</thead>
@@ -34,6 +35,10 @@
 				<td>${ cli.adresse }</td>
 				<td>${ cli.telephone }</td>
 				<td>${ cli.email }</td>
+				<td>
+				<c:if test="${ not empty cli.fichier.nom  }">
+				<a href="<c:url value="/images/${ cli.fichier.nom }" />" >Voir</a></td>
+				</c:if>
 				<td id ="action"><a href="./suppressionClient?nom=${ cli.nom }">
 				<img src="./resources/images/croixRouge.jpg" width="30" id="croix"></a></td>			
 			</tr>

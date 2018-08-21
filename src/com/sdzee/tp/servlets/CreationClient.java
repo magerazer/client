@@ -36,13 +36,13 @@ public class CreationClient extends HttpServlet {
 
     private List<Client>       listeClients              = new ArrayList<Client>();
     private Client             cli1                      = new Client( "Dudu", "Marcel", "12 rue des Moulins à Vent",
-            "0601060106", "marcel.dudu@gmail.com" );;
+            "0601060106", "marcel.dudu@gmail.com", new Fichier( "", "" ) );;
     private Client             cli2                      = new Client( "Routard", "Cedric", "4 rue des Hortensias",
-            "0605060708", "cedric.routard@gmail.com" );;
+            "0605060708", "cedric.routard@gmail.com", new Fichier( "", "" ) );;
     private Client             cli3                      = new Client( "Routard", "Cedric", "4 rue des Hortensias",
-            "0605060708", "cedric.routard@gmail.com" );;
+            "0605060708", "cedric.routard@gmail.com", new Fichier( "", "" ) );;
     private Client             cli4                      = new Client( "Routard", "Cedric", "4 rue des Hortensias",
-            "0605060708", "cedric.routard@gmail.com" );;
+            "0605060708", "cedric.routard@gmail.com", new Fichier( "", "" ) );;
 
     public CreationClient() {
         listeClients.add( cli1 );
@@ -84,11 +84,10 @@ public class CreationClient extends HttpServlet {
         UploadForm formUpload = new UploadForm();
 
         /* Traitement de la requête et récupération du bean en résultant */
-        Fichier fichier = formUpload.enregistrerFichier( req, chemin );
 
         CreationClientForm form = new CreationClientForm();
 
-        Client client = form.inscriptionClient( req );
+        Client client = form.inscriptionClient( req, new Fichier( "", chemin ) );
 
         /**
          * Si aucune erreur de validation n'a eu lieu, alors ajout du bean
@@ -107,10 +106,6 @@ public class CreationClient extends HttpServlet {
         req.setAttribute( ATT_CLI, client );
         req.setAttribute( ATT_FORMCLI, form );
         // req.setAttribute( ATT_ERR, erreur );
-
-        /* Stockage du formulaire et du bean dans l'objet request */
-        req.setAttribute( ATT_FORM, formUpload );
-        req.setAttribute( ATT_FICHIER, fichier );
 
         if ( form.getErreurs().isEmpty() ) {
             this.getServletContext().getRequestDispatcher( VUE_AFFICHAGE ).forward( req, resp );

@@ -2,18 +2,20 @@ package com.sdzee.tp.beans;
 
 public class Client implements Comparable<Client> {
 
-    private String nom;
-    private String prenom;
-    private String adresse;
-    private String telephone;
-    private String email;
+    private String  nom;
+    private String  prenom;
+    private String  adresse;
+    private String  telephone;
+    private String  email;
+    private Fichier fichier;
 
-    public Client( String nom, String prenom, String adresse, String telephone, String email ) {
+    public Client( String nom, String prenom, String adresse, String telephone, String email, Fichier fichier ) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.telephone = telephone;
         this.email = email;
+        this.fichier = fichier;
     }
 
     public String getNom() {
@@ -70,6 +72,14 @@ public class Client implements Comparable<Client> {
             return true;
         else
             return false;
+    }
+
+    public Fichier getFichier() {
+        return fichier;
+    }
+
+    public void setFichier( Fichier fichier ) {
+        this.fichier = fichier;
     }
 
 }

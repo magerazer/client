@@ -2,15 +2,21 @@ package com.sdzee.tp.beans;
 
 public class Fichier {
 
-    private String description;
+    private String chemin;
     private String nom;
 
-    public String getDescription() {
-        return description;
+    public Fichier( String chemin, String nom ) {
+        super();
+        this.chemin = chemin;
+        this.nom = nom;
     }
 
-    public void setDescription( String description ) {
-        this.description = description;
+    public String getChemin() {
+        return chemin;
+    }
+
+    public void setChemin( String chemin ) {
+        this.chemin = chemin;
     }
 
     public String getNom() {

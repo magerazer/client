@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sdzee.tp.beans.Client;
+import com.sdzee.tp.beans.Fichier;
 
 public class SuppressionClient extends HttpServlet {
 
@@ -26,7 +27,7 @@ public class SuppressionClient extends HttpServlet {
         List<Client> listeClients = (ArrayList<Client>) session.getAttribute( ATT_SESSION_LISTE_CLIENTS );
 
         String nom = req.getParameter( ATT_NOM );
-        Client obj = new Client( nom, "", "", "", "" );
+        Client obj = new Client( nom, "", "", "", "", new Fichier( "", "" ) );
 
         for ( int i = 0; i < listeClients.size(); i++ ) {
             if ( listeClients.get( i ).equals( obj ) ) {

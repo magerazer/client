@@ -11,7 +11,7 @@
     	<c:import url="inc/menu.jsp" />
 
 	<div>
-		<form method="post" action="creationClient">
+		<form method="post" action="creationClient" enctype="multipart/form-data">
 			<c:import url="inc/inc_client_var.jsp" />
 			<input type="submit" value="Valider"  />
 			<input type="reset" value="Remettre à zéro" /> <br />

@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sdzee.tp.beans.Commande;
+import com.sdzee.tp.beans.Fichier;
 import com.sdzee.tp.forms.CreationCommandeForm;
 
 public class CreationCommande extends HttpServlet {
+
+    public static final String  CHEMIN                      = "chemin";
 
     public static final String  ATT_MSG                     = "message";
     public static final String  ATT_CMD                     = "commande";
@@ -72,9 +75,15 @@ public class CreationCommande extends HttpServlet {
          * true; } else { message = "Commande créée avec succès !"; }
          */
 
+        /*
+         * Lecture du paramètre 'chemin' passé à la servlet via la déclaration
+         * dans le web.xml
+         */
+        String chemin = this.getServletConfig().getInitParameter( CHEMIN );
+
         CreationCommandeForm form = new CreationCommandeForm();
 
-        Commande commande = form.creationCommande( req );
+        Commande commande = form.creationCommande( req, new Fichier( "", chemin ) );
 
         /* Récupération de la session depuis la requête */
         HttpSession session = req.getSession();

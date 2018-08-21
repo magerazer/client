@@ -11,6 +11,7 @@ import org.joda.time.format.DateTimeFormatter;
 
 import com.sdzee.tp.beans.Client;
 import com.sdzee.tp.beans.Commande;
+import com.sdzee.tp.beans.Fichier;
 
 public class CreationCommandeForm {
 
@@ -36,7 +37,7 @@ public class CreationCommandeForm {
     private String              resultat;
     private Map<String, String> erreurs                = new HashMap<String, String>();
 
-    public Commande creationCommande( HttpServletRequest req ) {
+    public Commande creationCommande( HttpServletRequest req, Fichier fichier ) {
         /*
          * String nom = req.getParameter( CHAMP_NOM ); String prenom =
          * req.getParameter( CHAMP_PRENOM ); String adresse = req.getParameter(
@@ -45,7 +46,7 @@ public class CreationCommandeForm {
          */
 
         CreationClientForm formcli = new CreationClientForm();
-        Client client = formcli.inscriptionClient( req );
+        Client client = formcli.inscriptionClient( req, fichier );
 
         String montant = req.getParameter( CHAMP_MONTANT );
 
