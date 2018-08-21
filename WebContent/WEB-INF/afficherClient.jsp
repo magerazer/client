@@ -27,7 +27,7 @@
           Adresse : <c:out value="${ client.adresse }"></c:out><br>
           Numéro de téléphone : <c:out value="${ client.telephone }"></c:out><br>
           Email : <c:out value="${ client.email }"></c:out><br>
-               
+         
 	    
     
    </div>

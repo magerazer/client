@@ -17,6 +17,8 @@ public class CreationClientForm {
     public static final String  CHAMP_ADR                 = "adresseClient";
     public static final String  CHAMP_TEL                 = "telephoneClient";
     public static final String  CHAMP_MAIL                = "emailClient";
+    private static final String CHAMP_FICHIER             = "fichier";
+    private static final int    TAILLE_TAMPON             = 10240;
 
     private static final String ATT_ERREURS               = "erreurs";
     private static final String ATT_RESULTAT              = "resultatClient";

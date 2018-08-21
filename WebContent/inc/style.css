@@ -91,7 +91,7 @@ tr:nth-child(odd) {
 td {
 	border: 1px #aaaaaa solid;
 	padding : 10px;
-	texte-align : left;
+	text-align : left;
 }
 
 #action {

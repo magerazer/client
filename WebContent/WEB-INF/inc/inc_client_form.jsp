@@ -22,8 +22,15 @@
 <input type="email" id="emailClient" name="emailClient" value="<c:out value="${ client.email }" />" size="20" maxlength="60" />
 <span class="erreur">${ form.erreurs['email'] }</span>
 <br />
+
+<label for="fichier">Image<span class="requis">*</span></label>
+<input type="file" id="fichier" name="fichier" value="<c:out value="${ fichier.nom }"/>" />
+<span class="erreur">${ form.erreurs['fichier'] }</span>
 <br><br>
+
+
 <span class="info"> ${ form.resultat } </span><br><br>
+
 
 
 

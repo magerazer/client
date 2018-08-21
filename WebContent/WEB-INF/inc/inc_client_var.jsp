@@ -40,6 +40,7 @@
    	</div>
    	<div id="div_Non" style="display:none">
    	<select name="choixCli">
+   	<option value="">Choisissez un client...</option>
    	<c:forEach var="cli" items="${ listeSessionClients }" >
 	  <option value="${cli.nom}">${ cli.prenom } ${ cli.nom }</option>
 	</c:forEach>

@@ -11,9 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sdzee.tp.beans.Client;
+import com.sdzee.tp.beans.Fichier;
 import com.sdzee.tp.forms.CreationClientForm;
+import com.sdzee.tp.forms.UploadForm;
 
 public class CreationClient extends HttpServlet {
+
+    public static final String CHEMIN                    = "chemin";
+
+    public static final String ATT_FICHIER               = "fichier";
+    public static final String ATT_FORM                  = "form";
 
     public static final String ATT_MSG                   = "message";
     public static final String ATT_CLI                   = "client";
@@ -64,12 +71,24 @@ public class CreationClient extends HttpServlet {
          * true; } else { message = "Client crée avec succès !"; }
          */
 
+        /* Récupération de la session depuis la requête */
+        HttpSession session = req.getSession();
+
+        /*
+         * Lecture du paramètre 'chemin' passé à la servlet via la déclaration
+         * dans le web.xml
+         */
+        String chemin = this.getServletConfig().getInitParameter( CHEMIN );
+
+        /* Préparation de l'objet formulaire */
+        UploadForm formUpload = new UploadForm();
+
+        /* Traitement de la requête et récupération du bean en résultant */
+        Fichier fichier = formUpload.enregistrerFichier( req, chemin );
+
         CreationClientForm form = new CreationClientForm();
 
         Client client = form.inscriptionClient( req );
-
-        /* Récupération de la session depuis la requête */
-        HttpSession session = req.getSession();
 
         /**
          * Si aucune erreur de validation n'a eu lieu, alors ajout du bean
@@ -88,6 +107,10 @@ public class CreationClient extends HttpServlet {
         req.setAttribute( ATT_CLI, client );
         req.setAttribute( ATT_FORMCLI, form );
         // req.setAttribute( ATT_ERR, erreur );
+
+        /* Stockage du formulaire et du bean dans l'objet request */
+        req.setAttribute( ATT_FORM, formUpload );
+        req.setAttribute( ATT_FICHIER, fichier );
 
         if ( form.getErreurs().isEmpty() ) {
             this.getServletContext().getRequestDispatcher( VUE_AFFICHAGE ).forward( req, resp );
